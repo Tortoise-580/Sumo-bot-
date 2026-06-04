@@ -1,0 +1,13 @@
+# CCS Build artifacts
+Debug/
+Release/
+
+# Object files and executables
+*.obj
+*.out
+*.map
+*.txt
+
+# Metadata
+.settings/
+.clangd/
