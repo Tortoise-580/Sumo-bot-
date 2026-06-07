@@ -6,16 +6,16 @@
 #include<stdint.h>
  #include <msp430.h>
 
-typedef enum 
+typedef enum
 {
-    IO_10,  // port1.0 
+    IO_10,  // port1.0
     IO_11,IO_12, IO_13,IO_14,
     IO_15,IO_16,IO_17,IO_20,IO_21,IO_22,IO_23,IO_24,IO_25,IO_26, IO_27,
 }io_generic_e;
 
 
-typedef  enum 
-{   
+typedef  enum
+{
     IO_TEST_LED = IO_10,
     IO_UART_RXD = IO_11,
     IO_UART_TXD = IO_12,
@@ -32,10 +32,10 @@ typedef  enum
     IO_UNUSED_11 = IO_25,
     IO_PWM_MOTORS_LEFT = IO_26,
     IO_UNUSED_13 = IO_27,
-    
+
 }io_e;
 
-typedef enum 
+typedef enum
 {
     IO_SELECT_GPIO,    // ENUM VALUE : 00
     IO_SELECT_ALT1,    // ENUM VALUE : 01
@@ -64,15 +64,25 @@ typedef enum
 typedef enum
 {
     IO_IN_LOW,       // WHETHER THE INPUT IS LOW OR
-    IO_IN_HIGH,       // HIGH 
+    IO_IN_HIGH,       // HIGH
 }io_in_e;
 
+struct io_config
+{
+    io_select_e select;     // after implementing the fcompiler flag the memory taken by this 1 byte
+    io_resistor_e resistor;
+    io_dir_e dir;
+    io_out_e out;
+};
 
+void io_configure(io_e io,const struct io_config *config);   // 'const' struct means the pointer won't be able t
+o change the value of the elements of the struct
+void io_init(void);
 void io_set_select(io_e io,io_select_e select);
 void io_set_direction(io_e io,io_dir_e direction);
 void io_set_resistor(io_e io,io_resistor_e resistor);
 void io_set_out(io_e io, io_out_e out);
-io_in_e io_get_input(io_e io);  // funcion of return type io_in_e which takes io value 
+io_in_e io_get_input(io_e io);  // funcion of return type (io_in_e) which takes io value
 
 
 
