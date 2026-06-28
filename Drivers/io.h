@@ -5,6 +5,7 @@
 #include<stdbool.h>
 #include<stdint.h>
  #include <msp430.h>
+ #include<stdlib.h>
 
 typedef enum 
 {
@@ -67,13 +68,37 @@ typedef enum
     IO_IN_HIGH,       // HIGH 
 }io_in_e;
 
+typedef enum
+{   
+    IO_TRIGGER_RISING,   
+    IO_TRIGGER_FALLING,
 
+}io_trigger_e;
+
+struct io_config
+{
+    io_select_e select;     // after implementing the fcompiler flag the memory taken by this 1 byte
+    io_resistor_e resistor;
+    io_dir_e dir;
+    io_out_e out;  
+};
+
+void io_configure(io_e io,const struct io_config *config);   // 'const' struct means the pointer won't be able to change the value of the elements of the struct 
 void io_set_select(io_e io,io_select_e select);
 void io_set_direction(io_e io,io_dir_e direction);
 void io_set_resistor(io_e io,io_resistor_e resistor);
 void io_set_out(io_e io, io_out_e out);
-io_in_e io_get_input(io_e io);  // funcion of return type io_in_e which takes io value 
+io_in_e io_get_input(io_e io);  // funcion of return type (io_in_e) which takes io value 
 
+
+typedef void(*isr_function_pointer)(void);
+void io_configure_interrupt(io_e io,io_trigger_e trigger,isr_function_pointer isr);
+void io_deconfigure(io_e io);
+void io_enable_interrupt(io_e io);
+void io_disable_interrupt(io_e io);
+
+static void io_set_interrupt_trigger(io_e io, io_trigger_e trigger);
+static void io_register_isr(io_e io,isr_function_pointer isr);
 
 
 #endif
