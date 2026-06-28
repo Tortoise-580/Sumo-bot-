@@ -1,7 +1,8 @@
 #ifndef DEFINES_H
 #define DEFINES_H
 
-#define UNUSED(x)  (void)(x)  // here the x is like the placeholder thing like used in functions , whenever this macro is called that x will take the value 
+#define UNUSED(x)  (void)(x)  // here the x is like the placeholder thing like used in functions , whenever this
+ macro is called that x will take the value
 
 #define SUPPRESS_UNUSED  __attribute__((unused))
 #define ARRAY_SIZE(array) = (sizeof(array)/sizeof(array[0])) 

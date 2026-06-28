@@ -24,15 +24,15 @@ static inline uint8_t io_pin_idx(io_e io)    // pin number
 
 static inline uint8_t io_pin_bit(io_e io)     
 {
-    return (0x1<< io_pin_idx(io));    // can be anyoneone of teh 8 bits useful for the register configs : 0x00000000 , using left shift op make any one bit 1 from these 8 bits 
+    return (0x1<< io_pin_idx(io));    // can be anyoneone of teh 8 bits useful for the register configs : 0x00000000 , using left shift op make any one bit 1 from these 8 bits
 }
 
-static inline uint8_t io_port(io_e io)  // determine port number 
+static inline uint8_t io_port(io_e io)  // determine port number
 {
     return(io & port_mask)>>port_offset;  // this will will return either 0 or 1 ; 0 means port 1 and 1 means port 2 since my launchpad has 2 ports only 
 }
 
-typedef enum 
+typedef enum
 {
     IO_PORT1,
     IO_PORT2,
