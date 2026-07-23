@@ -7,11 +7,11 @@ typedef  enum
 {
     PWM_MOTORDRIVER_LEFT,  
     PWM_MOTORDRIVER_RIGHT
-}pwm_e
+}pwm_e;
 
 
 void pwm_init(void);
-void pwm_duty_cycle(pwm_e pwm,uint8_t duty_cycle_percent);
+void pwm_set_duty_cycle(pwm_e pwm,uint8_t duty_cycle_percent);
 
 
 #endif

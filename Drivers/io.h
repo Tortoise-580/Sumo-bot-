@@ -25,14 +25,14 @@ typedef  enum
     IO_UNUSED_3 = IO_15,
     IO_I2C_SCL = IO_16,
     IO_I2C_SDA = IO_17,
-    IO_IR_REMOTE = IO_20,
-    IO_MOTORS_LEFT_CC_1 = IO_21,
-    IO_MOTORS_LEFT_CC_2 = IO_22,
+    IO_IR_REMOTE = IO_20,         // IR reciever out pin connected to P2.0(falling edge triggered)
+    IO_PWM_MOTORS_LEFT = IO_21,  // PWM SIGNAL using ccm timera1 provided here
+    IO_UNUSED_11 = IO_22,   
     IO_RANGE_SENSOR_FRONT_INT = IO_23,
     IO_XSHUT_FRONT = IO_24,
-    IO_UNUSED_11 = IO_25,
-    IO_PWM_MOTORS_LEFT = IO_26,
-    IO_UNUSED_13 = IO_27,
+    IO_UNUSED_12 = IO_25,
+    IO_MOTORS_LEFT_CC_1 = IO_26,   //  direction/state control of motor , clockwise or anticlockwise   // :-> so just choose any gpio pin in output mode 
+    IO_MOTORS_LEFT_CC_2 = IO_27,   // direction/state  contro of motor , clockwise or anticlock :-> so just choose any gpio pin in output mode 
 
 }io_e;
 
