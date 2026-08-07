@@ -256,6 +256,6 @@ void i2c_init(void)
      UCB0CTL1 &=~UCSWRST;  // Clear Reset
 
     // Set slave address
-        set_slave_address(DEFAULT_SLAVE_ADDRESS);   // slave address has been written to this register 
+        i2c_set_slave_address(DEFAULT_SLAVE_ADDRESS);   // slave address has been written to this register 
    // initialised = true;
 }
